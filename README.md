@@ -1,11 +1,11 @@
-#Project Title: Minecraft
+#Project Title: MinecraftSPM
 ##Module: G54SPM
 
 ###Team Members: 
 
 
-Kesava (Scrum & Git Master) 
-Wayne 
+Kesava (Scrum Master) 
+Wayne (Git Master)
 Kelvin 
 Lyu 
 Wenhao
