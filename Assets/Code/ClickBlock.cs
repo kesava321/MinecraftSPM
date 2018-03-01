@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ClickBlock : MonoBehaviour
 {
+	// represents the difference in position of the positions new instance
+	public Vector3 delta;
 
 	// This function starts when the mouse cursor is over the GameObject
 	void OnMouseOver()
@@ -10,15 +12,22 @@ public class ClickBlock : MonoBehaviour
 		// If left mouse press
 		if (Input.GetMouseButtonDown(0))
 		{
-			// Display this text in the Console
 			Debug.Log("Left button has been clicked");
+
+			// Destroy the parent of the face we clicked
+			Destroy(this.transform.parent.gameObject);
 		}
 
 		// If right mouse press
 		if (Input.GetMouseButtonDown(1))
 		{
-			// Display a message in the Console tab
 			Debug.Log("Right button has been clicked");
+			// Call method from CreateWorld class
+			CreateWorld.CloneAndPlace(this.transform.parent.transform.position + delta, // N (center of new instance)= C (center of the cube) + delta
+				this.transform.parent.gameObject); // The parent GameObject
 		}
 	}
 }
+
+
+	
