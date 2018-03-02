@@ -3,17 +3,12 @@ using System.Collections;
 
 public class CreateWorld : MonoBehaviour
 {
-    public GameObject voxel;
-
-    public float SizeX;
-    public float SizeZ;
-    public float SizeY;
-
+    
 
 	// Use this for initialization
 	void Start ()
 	{
-        StartCoroutine(SimpleGenerator());
+        
 	}
 
 	// Update is called once per frame
@@ -32,38 +27,5 @@ public class CreateWorld : MonoBehaviour
 		clone.name = "Voxel@" + clone.transform.position;
 	}
 
-    IEnumerator SimpleGenerator()
-    {
-        //in this frame we will instantiate 50 voxels per frame
-        uint numberOfInstances = 0;
-        uint instancesPerFrame = 50;
-
-        for (int x = 1; x <= SizeX; x++)
-        {
-            for (int z = 1; z <= SizeZ; z++)//added the z
-            {
-                // Compute a random height
-                float height = Random.Range(0, SizeY);
-                for (int y = 0; y <= height; y++)
-                {
-                    // Compute the position for every voxel
-                    Vector3 newPosition = new Vector3(x, y, z);
-                    // Call the method giving the new position and a Voxel instance as parameters
-                    CloneAndPlace(newPosition, voxel);
-                    // Increment numberOfInstances
-                    numberOfInstances++;
-
-                    // If the number of instances per frame was met
-                    if (numberOfInstances == instancesPerFrame)
-                    {
-                        // Reset numberOfInstances
-                        numberOfInstances = 0;
-                        // Wait for next frame
-                        yield return new WaitForEndOfFrame();
-                    }
-                }//end for
-            }//end for
-        }//end for
-    }
 
 }
