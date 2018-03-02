@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoGenerateBlocks : MonoBehaviour {
-    public GameObject Voxel;
+public class AutoGenerateTreeTop : MonoBehaviour {
+
+    public GameObject VoxelTreeTop;
 
     public float SizeX;
     public float SizeZ;
     public float SizeY;
-
+    public float positionX;//to implement once function is written
+    public float positionZ;
+    public float positionY;
 
     // Use this for initialization
     void Start()
@@ -29,7 +32,7 @@ public class AutoGenerateBlocks : MonoBehaviour {
         // Place
         clone.transform.position = newPosition;
         // Rename
-        clone.name = "Voxel@" + clone.transform.position;
+        clone.name = "VoxelTreeTop@" + clone.transform.position;
     }
 
     IEnumerator SimpleGenerator()
@@ -39,19 +42,19 @@ public class AutoGenerateBlocks : MonoBehaviour {
         uint instancesPerFrame = 50;
 
 
-        for (int x = -10; x <= SizeX; x++)
+        for (int x = -1; x <= SizeX; x++)
         {
-            for (int z = 0; z <= SizeZ; z++)
+            for (int z = -1; z <= SizeZ; z++)//added the z
             {
                 // Compute a random height
-                float height = Random.Range(0, SizeY);
-                for (int y = -3; y <= height; y++)
+                float height = 7;
+                for (int y = 4; y <= height; y++)
                 {
                     // Compute the position for every voxel
 
                     Vector3 newPosition = new Vector3(x, y, z);
                     // Call the method giving the new position and a Voxel instance as parameters
-                    CloneAndPlace(newPosition, Voxel);
+                    CloneAndPlace(newPosition, VoxelTreeTop);
                     // Increment numberOfInstances
                     numberOfInstances++;
 

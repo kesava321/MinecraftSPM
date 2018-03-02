@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoGenerateBlocks : MonoBehaviour {
+public class AutoGenerateTrunk : MonoBehaviour {
+
     public GameObject Voxel;
 
     public float SizeX;
@@ -39,13 +40,13 @@ public class AutoGenerateBlocks : MonoBehaviour {
         uint instancesPerFrame = 50;
 
 
-        for (int x = -10; x <= SizeX; x++)
+        for (int x = 1; x <= SizeX; x++)
         {
-            for (int z = 0; z <= SizeZ; z++)
+            for (int z = 1; z <= SizeZ; z++)
             {
                 // Compute a random height
-                float height = Random.Range(0, SizeY);
-                for (int y = -3; y <= height; y++)
+                float height = 3;//Random.Range(0, SizeY);
+                for (int y = -1; y <= height; y++)
                 {
                     // Compute the position for every voxel
 
