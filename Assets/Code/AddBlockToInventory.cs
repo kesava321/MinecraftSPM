@@ -19,6 +19,14 @@ public class AddBlockToInventory : MonoBehaviour
             // Destroy the parent of the face we clicked
             Destroy(this.transform.parent.gameObject);
         }
-
-    }
+			
+	// If right mouse press
+	if (Input.GetMouseButtonDown(1))
+	{
+		Debug.Log("Right button has been clicked");
+		// Call method from CreateWorld class
+		CreateWorld.CloneAndPlace(this.transform.parent.transform.position + delta, // N (center of new instance)= C (center of the cube) + delta
+			this.transform.parent.gameObject); // The parent GameObject
+	}
+}
 }
