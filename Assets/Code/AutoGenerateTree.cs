@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class AutoGenerateTree : MonoBehaviour {
 
-    public GameObject Voxel;
-
-    public float SizeX;
-    public float SizeZ;
-    public float SizeY;
-
+    public GameObject VoxelTrunk;
     public GameObject VoxelTreeTop;
 
-    public float TreeSizeX;
-    public float TreeSizeZ;
-    public float TreeSizeY;
     public float positionX;//to implement once function is written
     public float positionZ;
     public float positionY;
@@ -39,7 +31,7 @@ public class AutoGenerateTree : MonoBehaviour {
         // Place
         clone.transform.position = newPosition;
         // Rename
-        clone.name = "Voxel@" + clone.transform.position;
+        clone.name = "VoxelTrunk@" + clone.transform.position;
     }
 
     IEnumerator SimpleGenerator()
@@ -47,20 +39,22 @@ public class AutoGenerateTree : MonoBehaviour {
         //in this frame we will instantiate 50 voxels per frame
         uint numberOfInstances = 0;
         uint instancesPerFrame = 50;
+        float TrunkSizeX = 1;
+        float TrunkSizeZ = 3;
+        float TrunkSizeY = 3;
 
-
-        for (int x = 1; x <= SizeX; x++)
+        for (int x = 1; x <= TrunkSizeX; x++)
         {
-            for (int z = 1; z <= SizeZ; z++)
+            for (int z = 1; z <= TrunkSizeZ; z++)
             {
                 // Compute height
-                float height = SizeY;
+                float height = TrunkSizeY;
                 for (int y = -1; y <= height; y++)
                 {
                     // Compute the position for every voxel
                     Vector3 newPosition = new Vector3(x, y, z);
                     // Call the method giving the new position and a Voxel instance as parameters
-                    CloneAndPlace(newPosition, Voxel);
+                    CloneAndPlace(newPosition, VoxelTrunk);
                     // Increment numberOfInstances
                     numberOfInstances++;
 
@@ -93,13 +87,14 @@ public class AutoGenerateTree : MonoBehaviour {
         //in this frame we will instantiate 50 voxels per frame
         uint numberOfInstances = 0;
         uint instancesPerFrame = 50;
-
+        float TreeSizeX = 3;
+        float TreeSizeZ = 3;
 
         for (int x = -1; x <= TreeSizeX; x++)
         {
             for (int z = -1; z <= TreeSizeZ; z++)//added the z
             {
-                // Compute a random height
+                // Compute height
                 float height = 7;
                 for (int y = 4; y <= height; y++)
                 {
