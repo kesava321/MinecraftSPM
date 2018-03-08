@@ -27,8 +27,8 @@ GameObject:
   - component: {fileID: 22486880}
   - component: {fileID: 22215472}
   - component: {fileID: 11421848}
-  - component: {fileID: 11475504}
   - component: {fileID: 22596642}
+  - component: {fileID: 114038676316956446}
   m_Layer: 5
   m_Name: UItem
   m_TagString: UItem
@@ -96,17 +96,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 1
---- !u!114 &11475504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dd5c838c2f6c4abebc60bebc9fa6560, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &22215472
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -218,3 +207,14 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 158038}
   m_IsPrefabParent: 1
+--- !u!114 &114038676316956446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 158038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b46197c685e9643b0373daf0caa5ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
