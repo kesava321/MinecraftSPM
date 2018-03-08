@@ -39,36 +39,27 @@ public class AutoGenerateTree : MonoBehaviour {
         //in this frame we will instantiate 50 voxels per frame
         uint numberOfInstances = 0;
         uint instancesPerFrame = 50;
-        float TrunkSizeX = 1;
-        float TrunkSizeZ = 3;
-        float TrunkSizeY = 3;
+        float height = 3;
 
-        for (int x = 1; x <= TrunkSizeX; x++)
-        {
-            for (int z = 1; z <= TrunkSizeZ; z++)
-            {
-                // Compute height
-                float height = TrunkSizeY;
-                for (int y = -1; y <= height; y++)
+        // Compute height
+        for (int positionY = -1; positionY <= height; positionY++)
+          {
+           // Compute the position for every voxel
+           Vector3 newPosition = new Vector3(positionX, positionY, positionZ);
+           // Call the method giving the new position and a Voxel instance as parameters
+           CloneAndPlace(newPosition, VoxelTrunk);
+           // Increment numberOfInstances
+           numberOfInstances++;
+
+           // If the number of instances per frame was met
+              if (numberOfInstances == instancesPerFrame)
                 {
-                    // Compute the position for every voxel
-                    Vector3 newPosition = new Vector3(x, y, z);
-                    // Call the method giving the new position and a Voxel instance as parameters
-                    CloneAndPlace(newPosition, VoxelTrunk);
-                    // Increment numberOfInstances
-                    numberOfInstances++;
-
-                    // If the number of instances per frame was met
-                    if (numberOfInstances == instancesPerFrame)
-                    {
-                        // Reset numberOfInstances
-                        numberOfInstances = 0;
-                        // Wait for next frame
-                        yield return new WaitForEndOfFrame();
-                    }
-                }//end for
-            }//end for
-        }//end for
+                    // Reset numberOfInstances
+                    numberOfInstances = 0;
+                    // Wait for next frame
+                    yield return new WaitForEndOfFrame();
+                 }
+           }//end for
     }
 
     //Tree top
@@ -87,10 +78,10 @@ public class AutoGenerateTree : MonoBehaviour {
         //in this frame we will instantiate 50 voxels per frame
         uint numberOfInstances = 0;
         uint instancesPerFrame = 50;
-        float TreeSizeX = 3;
+        float TreeSizeX = 2;
         float TreeSizeZ = 3;
 
-        for (int x = -1; x <= TreeSizeX; x++)
+        for (int x = -2; x <= TreeSizeX; x++)
         {
             for (int z = -1; z <= TreeSizeZ; z++)//added the z
             {
