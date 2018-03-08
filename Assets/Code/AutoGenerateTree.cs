@@ -7,9 +7,9 @@ public class AutoGenerateTree : MonoBehaviour {
     public GameObject VoxelTrunk;
     public GameObject VoxelTreeTop;
 
-    public float positionX;//to implement once function is written
-    public float positionZ;
-    public float positionY;
+    public int positionX;
+    public int positionZ;
+    public int positionY;
 
     // Use this for initialization
     void Start()
@@ -39,7 +39,7 @@ public class AutoGenerateTree : MonoBehaviour {
         //in this frame we will instantiate 50 voxels per frame
         uint numberOfInstances = 0;
         uint instancesPerFrame = 50;
-        float height = 3;
+        int height = 3;
 
         // Compute height
         for (int positionY = -1; positionY <= height; positionY++)
@@ -78,20 +78,22 @@ public class AutoGenerateTree : MonoBehaviour {
         //in this frame we will instantiate 50 voxels per frame
         uint numberOfInstances = 0;
         uint instancesPerFrame = 50;
-        float TreeSizeX = 2;
-        float TreeSizeZ = 3;
 
-        for (int x = -2; x <= TreeSizeX; x++)
+        int TreeSizeX = positionX -2;
+        int TreeSizeZ = positionZ -2;
+
+        for (int x = TreeSizeX; x <= positionX+2; x++)
         {
-            for (int z = -1; z <= TreeSizeZ; z++)//added the z
+            for (int z = TreeSizeZ; z <= positionZ+2; z++)
             {
                 // Compute height
-                float height = 7;
+                int height = 7;
                 for (int y = 4; y <= height; y++)
                 {
                     // Compute the position for every voxel
 
                     Vector3 newPosition = new Vector3(x, y, z);
+
                     // Call the method giving the new position and a Voxel instance as parameters
                     CloneAndPlace(newPosition, VoxelTreeTop);
                     // Increment numberOfInstances
@@ -107,6 +109,6 @@ public class AutoGenerateTree : MonoBehaviour {
                     }
                 }//end for
             }//end for
-        }//end for
+        }
     }
 }
