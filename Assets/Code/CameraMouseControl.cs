@@ -22,6 +22,8 @@ public class CameraMouseControl : MonoBehaviour {
 		var mouseDelta = new Vector2 (Input.GetAxisRaw ("Mouse X"), Input.GetAxisRaw ("Mouse Y"));
 
 		mouseDelta = Vector2.Scale (mouseDelta, new Vector2 (sensitivity * smoothing, sensitivity * smoothing));
+		//Lerp is a linear movement of interpretation
+		//move smoothly between two points
 		smoothV.x = Mathf.Lerp(smoothV.x, mouseDelta.x, 1f / smoothing);
 		smoothV.y = Mathf.Lerp(smoothV.y, mouseDelta.y, 1f / smoothing);
 		mouseView += smoothV;
