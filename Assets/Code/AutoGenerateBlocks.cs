@@ -9,7 +9,6 @@ public class AutoGenerateBlocks : MonoBehaviour {
     public float SizeZ;
     public float SizeY;
 
-
     // Use this for initialization
     void Start()
     {
@@ -19,7 +18,6 @@ public class AutoGenerateBlocks : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public static void CloneAndPlace(Vector3 newPosition, GameObject originalGameobject)
@@ -45,16 +43,14 @@ public class AutoGenerateBlocks : MonoBehaviour {
             {
                 // Compute a random height
                 float height = Random.Range(0, SizeY);
-                for (int y = -3; y <= height; y++)
+                for (int y = -1; y <= height; y++)
                 {
                     // Compute the position for every voxel
-
                     Vector3 newPosition = new Vector3(x, y, z);
                     // Call the method giving the new position and a Voxel instance as parameters
                     CloneAndPlace(newPosition, Voxel);
                     // Increment numberOfInstances
                     numberOfInstances++;
-
                     // If the number of instances per frame was met
                     if (numberOfInstances == instancesPerFrame)
                     {
