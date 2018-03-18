@@ -113,6 +113,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &229089262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 229089264}
+  - component: {fileID: 229089263}
+  m_Layer: 0
+  m_Name: Tree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &229089263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 229089262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad65df921e5f949a1b29a80ef0b904b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voxelTrunk: {fileID: 1367954600771960, guid: f676b119c105245ec84310bf42f88810, type: 2}
+  voxelLeaf: {fileID: 1557082606971084, guid: 1fa92b910be2e4867963bb30af9122e5, type: 2}
+  positionX: 0
+  positionZ: 1
+--- !u!4 &229089264
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 229089262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 5, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &446633440
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +201,7 @@ MonoBehaviour:
   VoxelTreeTop: {fileID: 1557082606971084, guid: 1fa92b910be2e4867963bb30af9122e5,
     type: 2}
   positionX: 9
-  positionZ: 3
+  positionZ: 43
   positionY: 0
 --- !u!1 &533091413
 GameObject:
@@ -234,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 533091413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -271,7 +315,7 @@ MonoBehaviour:
   VoxelTreeTop: {fileID: 1557082606971084, guid: 1fa92b910be2e4867963bb30af9122e5,
     type: 2}
   positionX: 3
-  positionZ: 3
+  positionZ: 43
   positionY: 0
 --- !u!4 &718647931
 Transform:
@@ -285,6 +329,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1194694060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1194694062}
+  - component: {fileID: 1194694061}
+  m_Layer: 0
+  m_Name: Tree (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1194694061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194694060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad65df921e5f949a1b29a80ef0b904b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voxelTrunk: {fileID: 1367954600771960, guid: f676b119c105245ec84310bf42f88810, type: 2}
+  voxelLeaf: {fileID: 1557082606971084, guid: 1fa92b910be2e4867963bb30af9122e5, type: 2}
+  positionX: 15
+  positionZ: 10
+--- !u!4 &1194694062
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194694060}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 5, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1681547065
 GameObject:
@@ -345,7 +433,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1681547065}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -5.9, y: 100, z: 80}
+  m_LocalPosition: {x: 0, y: 200, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -379,9 +467,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Voxel: {fileID: 1061184416406140, guid: 0a736fbf21b5e4495ab62eed2a15aa15, type: 2}
-  SizeX: 25
-  SizeZ: 25
-  SizeY: -2
+  SizeX: 45
+  SizeZ: 45
+  SizeY: 2
 --- !u!4 &1950899829
 Transform:
   m_ObjectHideFlags: 0
