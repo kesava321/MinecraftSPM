@@ -8,7 +8,7 @@ public class ControlCharacter : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	//turn of cursor on screen and keeps within game window
-		Cursor.lockState = CursorLockMode.Locked;
+		//Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame
@@ -24,8 +24,8 @@ public class ControlCharacter : MonoBehaviour {
 
 		transform.Translate (htranslation, 0, vtranslation);
 		//turns cursor back on if escape key is pressed
-		if (Input.GetKeyDown ("escape"))
-			Cursor.lockState = CursorLockMode.None; 
+		//if (Input.GetKeyDown ("escape"))
+		//	Cursor.lockState = CursorLockMode.None; 
 		
 	}
 }
