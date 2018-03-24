@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/TextMesh Pro/Resources/Shaders.meta
+guid: bfd97b7178e5d914ebe73156a22236a8
+folderAsset: yes
+timeCreated: 1436068007
+licenseType: Store
+DefaultImporter:
+=======
+guid: d62a573c923f5cb47b8ff65261033b90
+timeCreated: 1520438035
+licenseType: Free
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+>>>>>>> Stashed changes:Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
