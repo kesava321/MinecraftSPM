@@ -2530,6 +2530,12 @@ Prefab:
       propertyPath: SizeZ
       value: 35
       objectReference: {fileID: 0}
+    - target: {fileID: 114527437861565622, guid: 11c6c2cc71c7c49c6b378acbdb571a77,
+        type: 2}
+      propertyPath: Voxel
+      value: 
+      objectReference: {fileID: 1061184416406140, guid: 0a736fbf21b5e4495ab62eed2a15aa15,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 11c6c2cc71c7c49c6b378acbdb571a77, type: 2}
   m_IsPrefabParent: 0
