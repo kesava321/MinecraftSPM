@@ -30,3 +30,36 @@ public class Chunk : MonoBehaviour {
 	void Update () {
 
 	}
+
+
+	void CombineQuads()
+	{
+		//1. Combine all children meshes
+		MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
+		CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+		int i = 0;
+		while (i < meshFilters.Length) {
+			combine[i].mesh = meshFilters[i].sharedMesh;
+			combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+			i++;
+		}
+
+		//2. Create a new mesh on the parent object
+		MeshFilter mf = (MeshFilter) this.gameObject.AddComponent(typeof(MeshFilter));
+		mf.mesh = new Mesh();
+
+		//3. Add combined meshes on children as the parent's mesh
+		mf.mesh.CombineMeshes(combine);
+
+		//4. Create a renderer for the parent
+		MeshRenderer renderer = this.gameObject.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
+		renderer.material = cubeMaterial;
+
+		//5. Delete all uncombined children
+		foreach (Transform quad in this.transform) {
+			Destroy(quad.gameObject);
+		}
+
+	}
+
+}
