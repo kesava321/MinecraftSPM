@@ -40,3 +40,35 @@ public class CubeProperty : MonoBehaviour {
 
 			c++;
 		}
+
+		Debug.Log("Normals-----");
+		foreach(Vector3 n in meshFilter.mesh.normals)
+		{
+			Debug.Log(n);
+
+		}
+
+
+		Debug.Log("UVs------");
+		foreach(Vector2 u in meshFilter.mesh.uv)
+		{
+			Debug.Log(u);
+			allVs += u + " ";
+		}
+
+
+		Debug.Log("Triangles----");
+		foreach(int i in meshFilter.mesh.triangles)
+		{
+			Debug.Log(i);
+			allVs += i + " ";
+		}
+		Debug.Log(allVs);
+
+	}
+
+	// Update is called once per frame
+	void Update () {
+
+	}
+}
