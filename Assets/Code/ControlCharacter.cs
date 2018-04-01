@@ -16,7 +16,7 @@ public class ControlCharacter : MonoBehaviour {
 	void Start () {
 	
         //turn of cursor on screen and keeps within game window
-		Cursor.lockState = CursorLockMode.Locked;
+		//Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame

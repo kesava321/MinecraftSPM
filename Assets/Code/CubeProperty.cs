@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CubeProperty : MonoBehaviour {
+public class CubeProperties : MonoBehaviour {
 
 	MeshFilter meshFilter;
 	public Text vertexPrefab;
@@ -21,25 +21,26 @@ public class CubeProperty : MonoBehaviour {
 			Debug.Log(v);
 			string vname = v + "";
 
-			Text vLabel; //Vertex Label
+			Text vertexLabel;
 			if(!GameObject.Find(vname))
 			{
-				vLabel = Instantiate(vertexPrefab, Vector3.zero, Quaternion.identity ) as Text;
-				vLabel.gameObject.name = vname;
-				vLabel.transform.SetParent(canvas.transform);
-				vLabel.text = v + ": " + c + "";
+				vertexLabel = Instantiate(vertexPrefab, Vector3.zero, Quaternion.identity ) as Text;
+				vertexLabel.gameObject.name = vname;
+				vertexLabel.transform.SetParent(canvas.transform);
+				vertexLabel.text = v + ": " + c + "";
 				Vector3 vertexLabelPos = Camera.main.WorldToScreenPoint(v + this.transform.position + new Vector3(0,c/80.0f,0));
-				vLabel.transform.position = vLabelPos;
+				vertexLabel.transform.position = vertexLabelPos;
 
 			}
 			else
 			{
-				vLabel = GameObject.Find(vname).GetComponent<Text>();
-				vLabel.text += " " + c; 
+				vertexLabel = GameObject.Find(vname).GetComponent<Text>();
+				vertexLabel.text += " " + c; 
 			}
 
 			c++;
 		}
+
 
 		Debug.Log("Normals-----");
 		foreach(Vector3 n in meshFilter.mesh.normals)

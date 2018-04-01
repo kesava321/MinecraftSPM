@@ -31,7 +31,6 @@ public class Chunk : MonoBehaviour {
 
 	}
 
-
 	void CombineQuads()
 	{
 		//1. Combine all children meshes
