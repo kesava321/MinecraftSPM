@@ -144,8 +144,8 @@ public class Block {
 		MeshFilter meshFilter = (MeshFilter) quad.AddComponent(typeof(MeshFilter));
 		meshFilter.mesh = mesh;
 
-		MeshRenderer renderer = quad.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
-		renderer.material = cubeMaterial;
+		//MeshRenderer renderer = quad.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
+		//renderer.material = cubeMaterial;
 	}
 
 	public bool HasSolidNeighbour(int x, int y, int z)
