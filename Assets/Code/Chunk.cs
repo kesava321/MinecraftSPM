@@ -18,12 +18,11 @@ public class Chunk : MonoBehaviour {
 				{
 					Vector3 pos = new Vector3(x,y,z);
 					if(Random.Range(0,100) < 50)
-					chunkData[x,y,z] = new Block(Block.BlockType.DIRT, pos, 
-						this.gameObject, cubeMaterial);
-					else
-					chunkData[x,y,z] = new Block(Block.BlockType.AIR, pos, 
+						chunkData[x,y,z] = new Block(Block.BlockType.DIRT, pos, 
 							this.gameObject, cubeMaterial);
-						
+					else
+						chunkData[x,y,z] = new Block(Block.BlockType.AIR, pos, 
+							this.gameObject, cubeMaterial);
 				}
 
 		//draw blocks
@@ -40,7 +39,7 @@ public class Chunk : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(BuildChunk(10,10,10));
+		StartCoroutine(BuildChunk(16,16,16));
 	}
 
 	// Update is called once per frame

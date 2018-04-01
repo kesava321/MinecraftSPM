@@ -30,7 +30,7 @@ public class Block {
 		parent = p;
 		position = pos;
 		cubeMaterial = c;
-		if (bType == BlockType.AIR)
+		if(bType == BlockType.AIR)
 			isSolid = false;
 		else
 			isSolid = true;
@@ -144,8 +144,8 @@ public class Block {
 		MeshFilter meshFilter = (MeshFilter) quad.AddComponent(typeof(MeshFilter));
 		meshFilter.mesh = mesh;
 
-		//MeshRenderer renderer = quad.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
-		//renderer.material = cubeMaterial;
+		MeshRenderer renderer = quad.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
+		renderer.material = cubeMaterial;
 	}
 
 	public bool HasSolidNeighbour(int x, int y, int z)
@@ -162,8 +162,8 @@ public class Block {
 
 	public void Draw()
 	{
-		if (bType == BlockType.AIR)
-			return; 
+		if(bType == BlockType.AIR) return;
+
 		if(!HasSolidNeighbour((int)position.x,(int)position.y,(int)position.z + 1))
 			CreateQuad(Cubeside.FRONT);
 		if(!HasSolidNeighbour((int)position.x,(int)position.y,(int)position.z - 1))
