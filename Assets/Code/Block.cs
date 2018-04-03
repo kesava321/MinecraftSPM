@@ -9,9 +9,9 @@ public class Block {
 
 	BlockType bType;
 	public bool isSolid;
+    Chunk owner;
 	GameObject parent;
 	Vector3 position;
-	Material cubeMaterial;
 
 	Vector2[,] blockUVs = { 
 		/*GRASS TOP*/		{new Vector2( 0.125f, 0.375f ), new Vector2( 0.1875f, 0.375f),
@@ -24,12 +24,12 @@ public class Block {
 			new Vector2( 0, 0.9375f ),new Vector2( 0.0625f, 0.9375f )}
 	}; 
 
-	public Block(BlockType b, Vector3 pos, GameObject p, Material c)
+	public Block(BlockType b, Vector3 pos, GameObject p, Chunk o)
 	{
 		bType = b;
+        owner = o;
 		parent = p;
 		position = pos;
-		cubeMaterial = c;
 		if(bType == BlockType.AIR)
 			isSolid = false;
 		else
@@ -144,18 +144,19 @@ public class Block {
 		MeshFilter meshFilter = (MeshFilter) quad.AddComponent(typeof(MeshFilter));
 		meshFilter.mesh = mesh;
 
-		MeshRenderer renderer = quad.AddComponent(typeof(MeshRenderer)) as MeshRenderer;
-		renderer.material = cubeMaterial;
 	}
 
 	public bool HasSolidNeighbour(int x, int y, int z)
 	{
-		Block[,,] chunks = parent.GetComponent<Chunk>().chunkData;
+		Block[,,] chunks;
+
+        chunks = owner.chunkData;
+
 		try
 		{
 			return chunks[x,y,z].isSolid;
 		}
-		catch(System.IndexOutOfRangeException ex){}
+		catch(System.IndexOutOfRangeException){}
 
 		return false;
 	}

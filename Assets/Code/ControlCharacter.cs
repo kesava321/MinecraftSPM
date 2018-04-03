@@ -8,7 +8,7 @@ public class ControlCharacter : MonoBehaviour {
 	public float speed = 15.0f;
 
     public float jumpForce = 20f;
-    public float gravity = 20.0f;
+    public float gravity = 15.0f;
 
     private Vector3 moveDir = Vector3.zero;
 	
@@ -16,7 +16,7 @@ public class ControlCharacter : MonoBehaviour {
 	void Start () {
 	
         //turn of cursor on screen and keeps within game window
-		//Cursor.lockState = CursorLockMode.Locked;
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame
@@ -38,6 +38,7 @@ public class ControlCharacter : MonoBehaviour {
         //turns cursor back on if escape key is pressed
 		if (Input.GetKeyDown ("escape"))
 			Cursor.lockState = CursorLockMode.None;
+
 
         CharacterController controller = gameObject.GetComponent<CharacterController>();
 

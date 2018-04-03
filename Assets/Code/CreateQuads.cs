@@ -10,6 +10,7 @@ public class CreateQuads : MonoBehaviour {
     public Material cubeMaterial;
     public BlockType bType;
     Vector2[,] blockUVs = { 
+                            
         /*GRASS TOP*/       {new Vector2( 0.125f, 0.375f ), new Vector2( 0.1875f, 0.375f),
                                 new Vector2( 0.125f, 0.4375f ),new Vector2( 0.1875f, 0.4375f )},
         /*GRASS SIDE*/      {new Vector2( 0.1875f, 0.9375f ), new Vector2( 0.25f, 0.9375f),
