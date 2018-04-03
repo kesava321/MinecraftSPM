@@ -146,12 +146,46 @@ public class Block {
 
 	}
 
+    int ConvertBlockIndexToLocal(int i)
+    {
+        if (i == -1)
+            i = World.chunkSize - 1;
+        else if (i == World.chunkSize)
+            i = 0;
+        return i;
+    }
+
 	public bool HasSolidNeighbour(int x, int y, int z)
 	{
 		Block[,,] chunks;
 
-        chunks = owner.chunkData;
+        if (x < 0 || x >= World.chunkSize ||
+            y < 0 || y >= World.chunkSize ||
+            z < 0 || z >= World.chunkSize)
+        {   //block in a neighbouring chunk
 
+            Vector3 neighbourChunkPos = this.parent.transform.position +
+                                        new Vector3((x - (int)position.x) * World.chunkSize,
+                                                    (y - (int)position.y) * World.chunkSize,
+                                                    (z - (int)position.z) * World.chunkSize);
+            string nName = World.BuildChunkName(neighbourChunkPos);
+
+            x = ConvertBlockIndexToLocal(x);
+            y = ConvertBlockIndexToLocal(y);
+            z = ConvertBlockIndexToLocal(z);
+
+            //get chunk from world
+            Chunk nChunk;
+            if (World.chunks.TryGetValue(nName, out nChunk))
+            {
+                chunks = nChunk.chunkData;
+            }
+            else
+                return false;
+        }
+        else
+            chunks = owner.chunkData;
+        
 		try
 		{
 			return chunks[x,y,z].isSolid;
@@ -160,6 +194,7 @@ public class Block {
 
 		return false;
 	}
+
 
 	public void Draw()
 	{
