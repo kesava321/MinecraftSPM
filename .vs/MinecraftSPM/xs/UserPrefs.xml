@@ -1,10 +1,20 @@
 ﻿<Properties StartupConfiguration="{55ECAFD9-D461-CA93-C3F5-BE0750BAF7D2}|">
+<<<<<<< Updated upstream
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Code/Chunk.cs">
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Code/Utils.cs">
+>>>>>>> Stashed changes
     <Files>
       <File FileName="Assets/Code/CreateQuads.cs" Line="13" Column="29" />
       <File FileName="Assets/Code/Chunk.cs" Line="1" Column="1" />
       <File FileName="Assets/Code/Block.cs" Line="196" Column="3" />
+<<<<<<< Updated upstream
       <File FileName="Assets/Code/World.cs" Line="1" Column="1" />
+=======
+      <File FileName="Assets/Code/World.cs" Line="20" Column="31" />
+      <File FileName="Assets/Code/GraphNoise.cs" Line="18" Column="31" />
+      <File FileName="Assets/Code/Utils.cs" Line="17" Column="1" />
+>>>>>>> Stashed changes
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
