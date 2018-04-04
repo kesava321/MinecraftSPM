@@ -467,7 +467,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 65063363}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 150, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2241,7 +2241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &850452586
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4986,6 +4986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aded2221f004f433e97d2ff2a1f1f65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1748298939633354, guid: e859bb4091df24e9c9e19da8f0d5b4b8, type: 2}
   textureAtlas: {fileID: 2100000, guid: 3654b9454a3af492386175adfdf25244, type: 2}
 --- !u!4 &2135032813
 Transform:
