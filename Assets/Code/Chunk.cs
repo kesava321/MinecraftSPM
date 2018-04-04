@@ -21,11 +21,26 @@ public class Chunk {
                     int worldX = (int)(x + chunk.transform.position.x);
                     int worldY = (int)(y + chunk.transform.position.y);
                     int worldZ = (int)(z + chunk.transform.position.z);
-                    
-                    //start with lowest layers
-                    if (worldY <= Utils.GenerateStoneHeight(worldX, worldZ))
-                        chunkData[x, y, z] = new Block(Block.BlockType.STONE, pos,
+
+                    //start with lowest to top layers
+                    if (Utils.fBM3D(worldX, worldY, worldZ, 0.1f, 3) < 0.42f)
+                        chunkData[x, y, z] = new Block(Block.BlockType.AIR, pos,
                             chunk.gameObject, this);
+                    else if (worldY == 0)
+                        chunkData[x, y, z] = new Block(Block.BlockType.BEDROCK, pos,
+                            chunk.gameObject, this);
+                    else if (worldY <= Utils.GenerateStoneHeight(worldX, worldZ))
+                    {
+                        if (Utils.fBM3D(worldX, worldY, worldZ, 0.1f, 2) < 0.45f && worldY < 40)
+                            chunkData[x, y, z] = new Block(Block.BlockType.DIAMOND, pos,
+                                chunk.gameObject, this);
+                    else if (Utils.fBM3D(worldX, worldY, worldZ, 0.003f, 3) < 0.41f && worldY < 20)
+                            chunkData[x, y, z] = new Block(Block.BlockType.REDSTONE, pos,
+                                chunk.gameObject, this);
+                        else 
+                            chunkData[x, y, z] = new Block(Block.BlockType.STONE, pos,
+                                chunk.gameObject, this);
+                    }
                     else if (worldY == Utils.GenerateHeight(worldX, worldZ))
                         chunkData[x, y, z] = new Block(Block.BlockType.GRASS, pos,
                             chunk.gameObject, this);
