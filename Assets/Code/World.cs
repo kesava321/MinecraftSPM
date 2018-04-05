@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class World : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class World : MonoBehaviour
     public static int worldSize = 4;
 	public static int radius = 1; //how many blocks around the player that are to be displayed
     public static Dictionary<string, Chunk> chunks;//holds chunks instead of array
+	public Slider loadingStatus; //the value that is shown in the slider 
 
 
     //needed for consistent name of chunk
@@ -46,9 +48,15 @@ public class World : MonoBehaviour
 
     IEnumerator BuildWorld()
     {
-		//gets the position of the floor in the players world dived by the chunck size.
+		//gets the position of the floor in the players world diveded by the chunck size.
 		int posx = (int)Mathf.Floor(player.transform.position.x/chunkSize);
 		int posz = (int)Mathf.Floor(player.transform.position.z/chunkSize);
+
+		//calculate the number of chunks to be processedin total
+		//this is done by multiplying the number of chunks found in the for loop
+		//total chunk is float, because if it was an int it cuts of any decimal values.  
+		float totalChunks = (Mathf.Pow(radius*2+1,2) * columnHeight) * 2; //multiplying by 2, as we are building chunk and then drawing chunk
+			int processCount = 0;
 
 		for(int z = -radius; z <= radius; z++)
 			for(int x = -radius; x <= radius; x++)
@@ -60,17 +68,26 @@ public class World : MonoBehaviour
                     Chunk c = new Chunk(chunkPosition, textureAtlas);
                     c.chunk.transform.parent = this.transform;
                     chunks.Add(c.chunk.name, c);
+					processCount ++;
+					loadingStatus.value = processCount/totalChunks * 100; 
 					yield return null;
                 }
 
         foreach (KeyValuePair<string, Chunk> c in chunks)
         {
             c.Value.DrawChunk();
+			processCount ++;
+			loadingStatus.value = processCount/totalChunks * 100;
             yield return null;
         }
 		player.SetActive (true);
     }
 
+	public void StartBuild() //Starts when play button is pressed
+	{
+		StartCoroutine(BuildWorld());
+	}
+		
 
 	// Use this for initialization
 	void Start () {
@@ -78,7 +95,6 @@ public class World : MonoBehaviour
         chunks = new Dictionary<string, Chunk>();
         this.transform.position = Vector3.zero;
         this.transform.rotation = Quaternion.identity;
-        StartCoroutine(BuildWorld());
 	}
 	
 	// Update is called once per frame
