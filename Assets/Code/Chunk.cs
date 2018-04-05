@@ -7,6 +7,9 @@ public class Chunk {
 	public Material cubeMaterial;
 	public Block[,,] chunkData;
     public GameObject chunk;
+	public enum ChunkStatus {DRAW,DONE,KEEP}; //Various states of chunks
+	public ChunkStatus status; //status of current chunks
+
 
     void BuildChunk()
     {
@@ -50,6 +53,7 @@ public class Chunk {
                     else
                         chunkData[x, y, z] = new Block(Block.BlockType.AIR, pos,
                             chunk.gameObject, this);
+					status = ChunkStatus.DRAW; //Block has just been created and is ready to be drawn.
                 }
     }
 

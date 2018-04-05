@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public class World : MonoBehaviour
 {
@@ -12,7 +12,9 @@ public class World : MonoBehaviour
     public static int worldSize = 4;
 	public static int radius = 1; //how many blocks around the player that are to be displayed
     public static Dictionary<string, Chunk> chunks;//holds chunks instead of array
-	public Slider loadingStatus; //the value that is shown in the slider 
+	//public Slider loadingStatus; //the value that is shown in the slider 
+	bool firstbuild = true;
+	bool building = false;
 
 
     //needed for consistent name of chunk
@@ -48,6 +50,7 @@ public class World : MonoBehaviour
 
     IEnumerator BuildWorld()
     {
+		building = true; //Stops another version of build World from running 
 		//gets the position of the floor in the players world diveded by the chunck size.
 		int posx = (int)Mathf.Floor(player.transform.position.x/chunkSize);
 		int posz = (int)Mathf.Floor(player.transform.position.z/chunkSize);
@@ -55,8 +58,8 @@ public class World : MonoBehaviour
 		//calculate the number of chunks to be processedin total
 		//this is done by multiplying the number of chunks found in the for loop
 		//total chunk is float, because if it was an int it cuts of any decimal values.  
-		float totalChunks = (Mathf.Pow(radius*2+1,2) * columnHeight) * 2; //multiplying by 2, as we are building chunk and then drawing chunk
-			int processCount = 0;
+		//float totalChunks = (Mathf.Pow(radius*2+1,2) * columnHeight) * 2; //multiplying by 2, as we are building chunk and then drawing chunk
+			//int processCount = 0;
 
 		for(int z = -radius; z <= radius; z++)
 			for(int x = -radius; x <= radius; x++)
@@ -65,28 +68,61 @@ public class World : MonoBehaviour
 					Vector3 chunkPosition = new Vector3((x+posx)*chunkSize, 
 						y*chunkSize, 
 						(posz+z)*chunkSize);
-                    Chunk c = new Chunk(chunkPosition, textureAtlas);
-                    c.chunk.transform.parent = this.transform;
-                    chunks.Add(c.chunk.name, c);
+					Chunk c;
+					string n = BuildChunkName(chunkPosition);
+					if(chunks.TryGetValue(n, out c))
+					{
+						c.status = Chunk.ChunkStatus.KEEP;
+						break;
+					}
+					else
+					{
+						c = new Chunk(chunkPosition, textureAtlas);
+	                    c.chunk.transform.parent = this.transform;
+	                    chunks.Add(c.chunk.name, c);
+					}
+
+					/*if(firstbuild)
+					{
 					processCount ++;
 					loadingStatus.value = processCount/totalChunks * 100; 
+					}*/
 					yield return null;
                 }
 
         foreach (KeyValuePair<string, Chunk> c in chunks)
         {
-            c.Value.DrawChunk();
+			if(c.Value.status == Chunk.ChunkStatus.DRAW)
+			{
+            	c.Value.DrawChunk();
+				c.Value.status = Chunk.ChunkStatus.KEEP;
+			}
+			//delete old chunks here
+
+			c.Value.status = Chunk.ChunkStatus.DONE;
+			/*if(firstbuild)
+			{
 			processCount ++;
 			loadingStatus.value = processCount/totalChunks * 100;
+			}*/
             yield return null;
         }
-		player.SetActive (true);
-    }
 
-	public void StartBuild() //Starts when play button is pressed
+		if(firstbuild)
+		{	player.SetActive(true);
+			//loadingAmount.gameObject.SetActive(false);
+			GetComponent<Camera>().gameObject.SetActive(false);
+			//playButton.gameObject.SetActive(false);
+			firstbuild = false; 
+    	}
+		building = false;
+	}
+
+
+	/*public void StartBuild() //Starts when play button is pressed
 	{
 		StartCoroutine(BuildWorld());
-	}
+	}*/
 		
 
 	// Use this for initialization
@@ -95,10 +131,13 @@ public class World : MonoBehaviour
         chunks = new Dictionary<string, Chunk>();
         this.transform.position = Vector3.zero;
         this.transform.rotation = Quaternion.identity;
+		StartCoroutine(BuildWorld());
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		/*if (!building && !firstbuild)
+			StartCorountine (BuildWorld ());*/
 		
 	}
 }
