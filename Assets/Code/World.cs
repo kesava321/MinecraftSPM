@@ -111,7 +111,7 @@ public class World : MonoBehaviour
 		if(firstbuild)
 		{	player.SetActive(true);
 			//loadingAmount.gameObject.SetActive(false);
-			GetComponent<Camera>().gameObject.SetActive(false);
+			//GetComponent<Camera>().gameObject.SetActive(false);
 			//playButton.gameObject.SetActive(false);
 			firstbuild = false; 
     	}
