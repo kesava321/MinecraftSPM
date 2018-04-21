@@ -58,6 +58,7 @@ public class Block {
 			isSolid = true;
 	}
 
+
 	void CreateQuad(Cubeside side)
 	{
 		Mesh mesh = new Mesh();
