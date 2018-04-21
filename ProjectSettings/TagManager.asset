@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - UItem
-  - UCell
+  - grass
+  - Undefined
+  - mud
+  - wood
   layers:
   - Default
   - TransparentFX
