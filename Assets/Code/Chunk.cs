@@ -11,7 +11,7 @@ public class Chunk {
     public GameObject chunk;
 	public enum ChunkStatus {DRAW,DONE,KEEP}; //Various states of chunks
 	public ChunkStatus status; //status of current chunks
-
+    bool treesCreated = false;
 
     void BuildChunk()
     {
@@ -36,19 +36,25 @@ public class Chunk {
                             chunk.gameObject, this);
                     else if (worldY <= Utils.GenerateStoneHeight(worldX, worldZ))
                     {
-                        if (Utils.fBM3D(worldX, worldY, worldZ, 0.1f, 2) < 0.45f && worldY < 40)
+                        if (Utils.fBM3D(worldX, worldY, worldZ, 0.1f, 2) < 0.35f && worldY < 45)
                             chunkData[x, y, z] = new Block(Block.BlockType.DIAMOND, pos,
                                 chunk.gameObject, this);
-                    else if (Utils.fBM3D(worldX, worldY, worldZ, 0.003f, 3) < 0.41f && worldY < 20)
+                        else if (Utils.fBM3D(worldX, worldY, worldZ, 0.003f, 3) < 0.41f && worldY < 20)
                             chunkData[x, y, z] = new Block(Block.BlockType.REDSTONE, pos,
                                 chunk.gameObject, this);
-                        else 
+                        else
                             chunkData[x, y, z] = new Block(Block.BlockType.STONE, pos,
                                 chunk.gameObject, this);
                     }
                     else if (worldY == Utils.GenerateHeight(worldX, worldZ))
-                        chunkData[x, y, z] = new Block(Block.BlockType.GRASS, pos,
-                            chunk.gameObject, this);
+                    {
+                        if (Utils.fBM3D(worldX, worldY, worldZ, 0.3f, 2) < 0.3f)//adjust values for how many trees
+                            chunkData[x, y, z] = new Block(Block.BlockType.WOODBASE, pos,
+                                      chunk.gameObject, this);
+                        else
+                            chunkData[x, y, z] = new Block(Block.BlockType.GRASS, pos,
+                                      chunk.gameObject, this);
+                    }
                     else if(worldY < Utils.GenerateHeight(worldX, worldZ))
                         chunkData[x, y, z] = new Block(Block.BlockType.DIRT, pos,
                             chunk.gameObject, this);
@@ -61,6 +67,17 @@ public class Chunk {
 
 	public void DrawChunk()	
     {  
+
+        if(!treesCreated)
+        {
+            for (int z = 0; z < World.chunkSize; z++)
+                for (int y = 0; y < World.chunkSize; y++)
+                    for (int x = 0; x < World.chunkSize; x++)
+                {
+                        BuildTrees(chunkData[x, y, z], x, y, z);
+                }
+            treesCreated = true;
+        }
         //draw chunks of blocks
 		for(int z = 0; z < World.chunkSize; z++)
 			for(int y = 0; y < World.chunkSize; y++)
@@ -73,6 +90,40 @@ public class Chunk {
 		MeshCollider collider = chunk.gameObject.AddComponent (typeof(MeshCollider)) as MeshCollider;
 		collider.sharedMesh = chunk.transform.GetComponent<MeshFilter> ().mesh;
 	}
+
+    void BuildTrees(Block trunk, int x, int y, int z)
+    {
+        if (trunk.bType != Block.BlockType.WOODBASE) return;
+
+            Block t = trunk.GetBlock(x, y + 1, z);
+            if (t != null)
+            {
+                t.SetType(Block.BlockType.WOOD);
+                Block t1 = t.GetBlock(x, y + 2, z);
+                if (t1 != null)
+                {
+                    t1.SetType(Block.BlockType.WOOD);
+
+                    for (int i = -1; i <= 1; i++)
+                        for (int j = -1; j <= 1; j++)
+                            for (int k = 3; k <= 4; k++)
+                            {
+                                Block t2 = trunk.GetBlock(x + i, y + k, z + j);
+
+                                if (t2 != null)
+                                {
+                                    t2.SetType(Block.BlockType.LEAVES);
+                                }
+                                else return;
+                            }
+                    Block t3 = t1.GetBlock(x, y + 5, z);
+                    if (t3 != null)
+                    {
+                        t3.SetType(Block.BlockType.LEAVES);
+                    }
+                }
+            }
+       }
 
 
 	// Use this for initialization
