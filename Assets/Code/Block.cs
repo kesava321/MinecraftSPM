@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Block {
-
+	// define cube and blocktypes 
 	enum Cubeside {BOTTOM, TOP, LEFT, RIGHT, FRONT, BACK};
 	public enum BlockType {GRASS, DIRT, STONE, REDSTONE, BEDROCK, DIAMOND, AIR};
 

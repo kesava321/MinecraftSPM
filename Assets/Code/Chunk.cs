@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//chunck is a selection of blocks grouped together and combined into single mesh
+//optimise rendering by removing interior polygons that are never seen  
 public class Chunk {
 
 	public Material cubeMaterial;
