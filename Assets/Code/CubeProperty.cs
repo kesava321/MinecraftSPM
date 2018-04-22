@@ -11,13 +11,16 @@ public class CubeProperties : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		meshFilter = this.GetComponent<MeshFilter>();
+		//meshfilter for the cube
+		meshFilter = this.GetComponent<MeshFilter>(); 
 
 		GameObject canvas = GameObject.FindWithTag("MainCanvas");
 		Debug.Log("Vertices------");
 		int c = 0;
-		foreach(Vector3 v in meshFilter.mesh.vertices)
+		//loops through all the meshes in the mesheses vertices array  
+		foreach(Vector3 v in meshFilter.mesh.vertices) 
 		{
+			//prints out vectors and assigns it to the cube, so it can viewed on screen
 			Debug.Log(v);
 			string vname = v + "";
 
@@ -41,7 +44,7 @@ public class CubeProperties : MonoBehaviour {
 			c++;
 		}
 
-
+		//prints out normals
 		Debug.Log("Normals-----");
 		foreach(Vector3 n in meshFilter.mesh.normals)
 		{
@@ -49,7 +52,8 @@ public class CubeProperties : MonoBehaviour {
 
 		}
 
-
+		//prints out UVs 
+		//UVs map a 2d coordinate on a texture onto a vertex
 		Debug.Log("UVs------");
 		foreach(Vector2 u in meshFilter.mesh.uv)
 		{
@@ -57,7 +61,8 @@ public class CubeProperties : MonoBehaviour {
 			allVs += u + " ";
 		}
 
-
+		//prints out triangles 
+		//array of integers
 		Debug.Log("Triangles----");
 		foreach(int i in meshFilter.mesh.triangles)
 		{
