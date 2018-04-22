@@ -58,6 +58,7 @@ public class Block {
 			isSolid = true;
 	}
 
+	//sets the block type to air
 	public void SetType(BlockType b)
 	{
 		bType = b;
