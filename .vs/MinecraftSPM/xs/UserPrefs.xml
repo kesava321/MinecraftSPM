@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Code/Chunk.cs">
     <Files>
       <File FileName="Assets/Code/CreateQuads.cs" Line="13" Column="29" />
-      <File FileName="Assets/Code/Chunk.cs" Line="25" Column="41" />
-      <File FileName="Assets/Code/Block.cs" Line="39" Column="5" />
+      <File FileName="Assets/Code/Chunk.cs" Line="42" Column="57" />
+      <File FileName="Assets/Code/Block.cs" Line="31" Column="1" />
       <File FileName="Assets/Code/World.cs" Line="1" Column="1" />
       <File FileName="Assets/Code/Utils.cs" Line="33" Column="9" />
     </Files>
