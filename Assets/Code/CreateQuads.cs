@@ -22,13 +22,15 @@ public class CreateQuads : MonoBehaviour {
                         };
 
     void CreateQuad(Cubeside side)
-    {
+    { 
+		//Create mesh for quad
         Mesh mesh = new Mesh();
         mesh.name = "ScriptedMesh" + side.ToString();
 
+		//define all of the arrays that need a mesh
         Vector3[] vertices = new Vector3[4];
         Vector3[] normals = new Vector3[4];
-        Vector2[] uvs = new Vector2[4];
+        Vector2[] uvs = new Vector2[4]; 
         int[] triangles = new int[6];
 
         //all possible UVs
@@ -37,6 +39,7 @@ public class CreateQuads : MonoBehaviour {
         Vector2 uv01;
         Vector2 uv11;
 
+		//define values of UVs and Vertices
         if (bType == BlockType.GRASS && side == Cubeside.TOP)
         {
             uv00 = blockUVs[0, 0];
@@ -60,6 +63,7 @@ public class CreateQuads : MonoBehaviour {
         }
 
         //all possible vertices 
+		//uv values of represents the four corner of a texture
         Vector3 p0 = new Vector3(-0.5f, -0.5f, 0.5f);
         Vector3 p1 = new Vector3(0.5f, -0.5f, 0.5f);
         Vector3 p2 = new Vector3(0.5f, -0.5f, -0.5f);
@@ -114,7 +118,7 @@ public class CreateQuads : MonoBehaviour {
                 triangles = new int[] { 3, 1, 0, 3, 2, 1 };
                 break;
         }
-
+		//put temporary arrays back into mesh 
         mesh.vertices = vertices;
         mesh.normals = normals;
         mesh.uv = uvs;
