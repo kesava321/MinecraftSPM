@@ -16,6 +16,7 @@ public class AddBlockToInventory : MonoBehaviour
         {
             Debug.Log("Left button has been clicked");
 
+			this.transform.GetComponentInParent<Creatpickupbox> ().GenerateCube ();
             // Destroy the parent of the face we clicked
             Destroy(this.transform.parent.gameObject);
         }

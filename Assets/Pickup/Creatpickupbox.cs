@@ -6,13 +6,11 @@ public class Creatpickupbox : MonoBehaviour {
 	public GameObject drop;
 
 
-	private void OnDestroy()
-
-		
-				{
+	public void GenerateCube()
+	{
 		
 		Instantiate(drop, transform.position,drop.transform.rotation);
 					
-				}
+	}
 		
 }

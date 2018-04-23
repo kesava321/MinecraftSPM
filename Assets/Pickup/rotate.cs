@@ -5,8 +5,8 @@ using UnityEngine;
 public class rotate : MonoBehaviour {
 	int speed = 10;
 
-	void start(){
+	void Update(){
 
-		this.transform.Rotate(Vector3.up*speed);
+		this.transform.Rotate(transform.up*speed);
 	}
 }
