@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 23353723957338350}
   - component: {fileID: 54093286152442002}
   - component: {fileID: 114036715601822108}
+  - component: {fileID: 114687085104092286}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -188,6 +189,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  jumpForce: 20
+  gravity: 15
 --- !u!114 &114579033382776324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,6 +204,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 5
   smoothing: 2
+--- !u!114 &114687085104092286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748298939633354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4d1f89d121c44b4aacf90e92f8ca071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 0}
+  inventoryIcons: []
 --- !u!124 &124317894789074968
 Behaviour:
   m_ObjectHideFlags: 1
