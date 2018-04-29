@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4266542683278162}
-  - component: {fileID: 114786146395533618}
   m_Layer: 0
   m_Name: GrassBlock
   m_TagString: Untagged
@@ -640,15 +639,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delta: {x: 1, y: 0, z: 0}
---- !u!114 &114786146395533618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1061184416406140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 753feab4abad67542804a11703e25c29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  drop: {fileID: 1830325539915978, guid: a215daea0a2c59445835e25b71fe324c, type: 2}

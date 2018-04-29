@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DayNight : MonoBehaviour {
 
-    float hourOfDay = 9f;
+    //float hourOfDay = 9f;
     public float timeSpeed = 0.6f;
 	
 	// Update is called once per frame
